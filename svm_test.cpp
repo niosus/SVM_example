@@ -97,8 +97,8 @@ int main()
 		cout<<prob.y[i]<<"---";
 		for (int k = 0; k < elements; ++k)
 		{
-			int index = (prob.x[k])->index;
-			double value = (prob.x[k])->value; 
+			int index = (prob.x[i][k].index);
+			double value = (prob.x[i][k].value); 
 			cout<<index<<":"<<value<<" ";
 		}
 		cout<<endl;
