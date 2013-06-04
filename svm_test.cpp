@@ -42,8 +42,8 @@ vector<vector<double> > generateData(int problemSize, int featureNum)
 int main()
 {
 	//here I will create a small artificial problem just for illustration
-	int sizeOfProblem = 3; //number of lines with labels
-	int elements = 4; //number of features for each data vector
+	int sizeOfProblem = 30; //number of lines with labels
+	int elements = 10; //number of features for each data vector
 
 	vector<vector<double> > data = generateData(sizeOfProblem,elements);
 	vector<int> labels = generateLabels(sizeOfProblem);
@@ -104,5 +104,27 @@ int main()
 		cout<<endl;
 	}
 	cout<<"all ok"<<endl;
+
+	//set all default parameters for param struct
+	param.svm_type = C_SVC;
+	param.kernel_type = RBF;
+	param.degree = 3;
+	param.gamma = 0;	// 1/num_features
+	param.coef0 = 0;
+	param.nu = 0.5;
+	param.cache_size = 100;
+	param.C = 1;
+	param.eps = 1e-3;
+	param.p = 0.1;
+	param.shrinking = 1;
+	param.probability = 0;
+	param.nr_weight = 0;
+	param.weight_label = NULL;
+	param.weight = NULL;
+
+	//try to actually execute it
+	model = svm_train(&prob, &param);
+
+
 	return 0;
 }
